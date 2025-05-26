@@ -1,24 +1,24 @@
 //! [![CI Status]][workflow] [![MSRV]][repo] [![Latest Version]][crates.io]
 //! [![Rust Doc Crate]][docs.rs] [![Rust Doc Main]][docs]
 //!
-//! [CI Status]: https://img.shields.io/github/actions/workflow/status/juntyr/tthresh-rs/ci.yml?branch=main
-//! [workflow]: https://github.com/juntyr/tthresh-rs/actions/workflows/ci.yml?query=branch%3Amain
+//! [CI Status]: https://img.shields.io/github/actions/workflow/status/juntyr/sperr-rs/ci.yml?branch=main
+//! [workflow]: https://github.com/juntyr/sperr-rs/actions/workflows/ci.yml?query=branch%3Amain
 //!
 //! [MSRV]: https://img.shields.io/badge/MSRV-1.82.0-blue
-//! [repo]: https://github.com/juntyr/tthresh-rs
+//! [repo]: https://github.com/juntyr/sperr-rs
 //!
-//! [Latest Version]: https://img.shields.io/crates/v/tthresh-sys
-//! [crates.io]: https://crates.io/crates/tthresh-sys
+//! [Latest Version]: https://img.shields.io/crates/v/sperr-sys
+//! [crates.io]: https://crates.io/crates/sperr-sys
 //!
-//! [Rust Doc Crate]: https://img.shields.io/docsrs/tthresh-sys
-//! [docs.rs]: https://docs.rs/tthresh-sys/
+//! [Rust Doc Crate]: https://img.shields.io/docsrs/sperr-sys
+//! [docs.rs]: https://docs.rs/sperr-sys/
 //!
 //! [Rust Doc Main]: https://img.shields.io/badge/docs-main-blue
-//! [docs]: https://juntyr.github.io/tthresh-rs/tthresh_sys
+//! [docs]: https://juntyr.github.io/sperr-rs/sperr_sys
 //!
-//! Low-level bindigs to the [tthresh] compressor.
+//! Low-level bindigs to the [SPERR] compressor.
 //!
-//! [tthresh]: https://github.com/rballester/tthresh
+//! [SPERR]: https://github.com/NCAR/SPERR
 
 #![allow(missing_docs)] // bindgen
 #![allow(unsafe_code)] // sys-crate
