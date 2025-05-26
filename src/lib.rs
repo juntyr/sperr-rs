@@ -45,7 +45,6 @@ pub enum CompressionMode {
 }
 
 #[derive(Debug, thiserror::Error)]
-
 /// Errors that can occur during compression and decompression with SPERR
 pub enum Error {
     /// one or more parameters is invalid
