@@ -29,17 +29,17 @@
 <a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub enum </span><a href="../../sperr/enum.CompressionMode.html">CompressionMode</a> {
 <a href=#30 id=30 data-nosnippet>30</a>    <span class="doccomment">/// Fixed bit-per-pixel rate
 <a href=#31 id=31 data-nosnippet>31</a>    </span>BitsPerPixel {
-<a href=#32 id=32 data-nosnippet>32</a>        <span class="doccomment">/// bits-per-pixel, must be in `0.0 &lt;= bpp &lt;= 64.0`
+<a href=#32 id=32 data-nosnippet>32</a>        <span class="doccomment">/// positive bits-per-pixel
 <a href=#33 id=33 data-nosnippet>33</a>        </span>bpp: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 <a href=#34 id=34 data-nosnippet>34</a>    },
 <a href=#35 id=35 data-nosnippet>35</a>    <span class="doccomment">/// Fixed peak signal-to-noise ratio
 <a href=#36 id=36 data-nosnippet>36</a>    </span>PeakSignalToNoiseRatio {
-<a href=#37 id=37 data-nosnippet>37</a>        <span class="doccomment">/// non-negative peak signal-to-noise ratio
+<a href=#37 id=37 data-nosnippet>37</a>        <span class="doccomment">/// positive peak signal-to-noise ratio
 <a href=#38 id=38 data-nosnippet>38</a>        </span>psnr: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 <a href=#39 id=39 data-nosnippet>39</a>    },
 <a href=#40 id=40 data-nosnippet>40</a>    <span class="doccomment">/// Fixed point-wise (absolute) error
 <a href=#41 id=41 data-nosnippet>41</a>    </span>PointwiseError {
-<a href=#42 id=42 data-nosnippet>42</a>        <span class="doccomment">/// non-negative point-wise (absolute) error
+<a href=#42 id=42 data-nosnippet>42</a>        <span class="doccomment">/// positive point-wise (absolute) error
 <a href=#43 id=43 data-nosnippet>43</a>        </span>pwe: <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
 <a href=#44 id=44 data-nosnippet>44</a>    },
 <a href=#45 id=45 data-nosnippet>45</a>}
