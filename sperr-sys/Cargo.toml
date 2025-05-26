@@ -1,0 +1,26 @@
+[package]
+name = "sperr-sys"
+version = "0.1.0"
+edition = { workspace = true }
+authors = { workspace = true }
+repository = { workspace = true }
+license = { workspace = true }
+rust-version = { workspace = true }
+
+description = "Low-level Rust bindings to the SPERR compressor"
+readme = "README.md"
+categories = ["api-bindings", "compression", "encoding"]
+keywords = ["SPERR", "bindgen", "compression", "encoding"]
+
+[features]
+openmp = ["dep:openmp-sys"]
+
+[dependencies]
+openmp-sys = { workspace = true, optional = true }
+
+[build-dependencies]
+bindgen = { workspace = true, features = ["runtime"] }
+cmake = { workspace = true }
+
+[lints]
+workspace = true
