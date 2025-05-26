@@ -29,17 +29,17 @@ use ndarray::{ArrayView2, ArrayView3, ArrayViewMut2, ArrayViewMut3};
 pub enum CompressionMode {
     /// Fixed bit-per-pixel rate
     BitsPerPixel {
-        /// bits-per-pixel, must be in `0.0 <= bpp <= 64.0`
+        /// positive bits-per-pixel
         bpp: f64,
     },
     /// Fixed peak signal-to-noise ratio
     PeakSignalToNoiseRatio {
-        /// non-negative peak signal-to-noise ratio
+        /// positive peak signal-to-noise ratio
         psnr: f64,
     },
     /// Fixed point-wise (absolute) error
     PointwiseError {
-        /// non-negative point-wise (absolute) error
+        /// positive point-wise (absolute) error
         pwe: f64,
     },
 }
