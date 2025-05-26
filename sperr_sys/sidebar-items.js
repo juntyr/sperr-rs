@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["free_dst","sperr_comp_2d","sperr_comp_3d","sperr_decomp_2d","sperr_decomp_3d","sperr_parse_header","sperr_trunc_3d"]};
+window.SIDEBAR_ITEMS = {"fn":["free_dst","sperr_comp_2d","sperr_comp_3d","sperr_decomp_2d","sperr_decomp_3d","sperr_parse_header"]};
