@@ -1,0 +1,1 @@
+searchState.loadedDescShard("sperr_sys", 0, "CI Status MSRV Latest Version Rust Doc Crate Rust Doc Main")

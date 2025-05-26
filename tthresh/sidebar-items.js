@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Buffer","Error","ErrorBound"],"fn":["compress","decompress"],"trait":["Element"]};
