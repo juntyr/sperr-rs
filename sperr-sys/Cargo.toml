@@ -12,6 +12,8 @@ readme = "README.md"
 categories = ["api-bindings", "compression", "encoding"]
 keywords = ["SPERR", "bindgen", "compression", "encoding"]
 
+links = "SPERR"
+
 [features]
 openmp = ["dep:openmp-sys"]
 
@@ -20,6 +22,7 @@ openmp-sys = { workspace = true, optional = true }
 
 [build-dependencies]
 bindgen = { workspace = true, features = ["runtime"] }
+cc = { workspace = true }
 cmake = { workspace = true }
 
 [lints]

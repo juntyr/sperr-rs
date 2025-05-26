@@ -80,7 +80,14 @@ impl CompressionMode {
     }
 }
 
-/// Compress a 2d `src` slice of data with the compression `mode`
+/// Compress a 2d `src` slice of data with the compression `mode`.
+///
+/// # Errors
+///
+/// Errors with
+/// - [`Error::InvalidParameter`] if the compression `mode` is invalid
+/// - [`Error::Other`] if another error occurs inside SPERR
+#[allow(clippy::missing_panics_doc)]
 pub fn compress_2d<T: Element>(
     src: ArrayView2<T>,
     mode: CompressionMode,
@@ -94,12 +101,12 @@ pub fn compress_2d<T: Element>(
     let res = unsafe {
         sperr_sys::sperr_comp_2d(
             src.as_ptr().cast(),
-            T::IS_FLOAT as _,
+            T::IS_FLOAT.into(),
             src.dim().1,
             src.dim().0,
             mode.as_mode(),
             mode.as_quality(),
-            true as _,
+            true.into(),
             std::ptr::addr_of_mut!(dst),
             std::ptr::addr_of_mut!(dst_len),
         )
@@ -107,10 +114,12 @@ pub fn compress_2d<T: Element>(
 
     match res {
         0 => (), // ok
+        #[allow(clippy::unreachable)]
         1 => unreachable!("sperr_comp_2d: dst is not pointing to a NULL pointer"),
         2 => return Err(Error::InvalidParameter),
         -1 => return Err(Error::Other),
-        _ => unreachable!("sperr_comp_2d: unknown error kind {res}"),
+        #[allow(clippy::panic)]
+        _ => panic!("sperr_comp_2d: unknown error kind {res}"),
     }
 
     #[allow(unsafe_code)] // Safety: dst is initialized by sperr_comp_2d
@@ -125,7 +134,18 @@ pub fn compress_2d<T: Element>(
     Ok(compressed)
 }
 
-/// Decompress a 2d SPERR-compressed `compressed` buffer into the `decompressed` array
+/// Decompress a 2d SPERR-compressed `compressed` buffer into the `decompressed`
+/// array.
+///
+/// # Errors
+///
+/// Errors with
+/// - [`Error::DecompressMissingHeader`] if the `compressed` buffer does not
+///   start with the 10 byte SPERR header
+/// - [`Error::DecompressShapeMismatch`] if the `decompressed` array is of a
+///   different shape than the header indicates
+/// - [`Error::Other`] if another error occurs inside SPERR
+#[allow(clippy::missing_panics_doc)]
 pub fn decompress_into_2d<T: Element>(
     compressed: &[u8],
     mut decompressed: ArrayViewMut2<T>,
@@ -161,7 +181,7 @@ pub fn decompress_into_2d<T: Element>(
         sperr_sys::sperr_decomp_2d(
             compressed.as_ptr().cast(),
             compressed.len(),
-            T::IS_FLOAT as _,
+            T::IS_FLOAT.into(),
             decompressed.dim().1,
             decompressed.dim().0,
             std::ptr::addr_of_mut!(dst),
@@ -170,9 +190,11 @@ pub fn decompress_into_2d<T: Element>(
 
     match res {
         0 => (), // ok
+        #[allow(clippy::unreachable)]
         1 => unreachable!("sperr_decomp_2d: dst is not pointing to a NULL pointer"),
         -1 => return Err(Error::Other),
-        _ => unreachable!("sperr_decomp_2d: unknown error kind {res}"),
+        #[allow(clippy::panic)]
+        _ => panic!("sperr_decomp_2d: unknown error kind {res}"),
     }
 
     #[allow(unsafe_code)] // Safety: dst is initialized by sperr_decomp_2d
@@ -189,7 +211,14 @@ pub fn decompress_into_2d<T: Element>(
 }
 
 /// Compress a 3d `src` volume of data with the compression `mode` using the
-/// preferred `chunks`
+/// preferred `chunks`.
+///
+/// # Errors
+///
+/// Errors with
+/// - [`Error::InvalidParameter`] if the compression `mode` is invalid
+/// - [`Error::Other`] if another error occurs inside SPERR
+#[allow(clippy::missing_panics_doc)]
 pub fn compress_3d<T: Element>(
     src: ArrayView3<T>,
     mode: CompressionMode,
@@ -204,7 +233,7 @@ pub fn compress_3d<T: Element>(
     let res = unsafe {
         sperr_sys::sperr_comp_3d(
             src.as_ptr().cast(),
-            T::IS_FLOAT as _,
+            T::IS_FLOAT.into(),
             src.dim().2,
             src.dim().1,
             src.dim().0,
@@ -221,10 +250,12 @@ pub fn compress_3d<T: Element>(
 
     match res {
         0 => (), // ok
+        #[allow(clippy::unreachable)]
         1 => unreachable!("sperr_comp_3d: dst is not pointing to a NULL pointer"),
         2 => return Err(Error::InvalidParameter),
         -1 => return Err(Error::Other),
-        _ => unreachable!("sperr_comp_3d: unknown error kind {res}"),
+        #[allow(clippy::panic)]
+        _ => panic!("sperr_comp_3d: unknown error kind {res}"),
     }
 
     #[allow(unsafe_code)] // Safety: dst is initialized by sperr_comp_3d
@@ -239,7 +270,16 @@ pub fn compress_3d<T: Element>(
     Ok(compressed)
 }
 
-/// Decompress a 3d SPERR-compressed `compressed` buffer into the `decompressed` array
+/// Decompress a 3d SPERR-compressed `compressed` buffer into the `decompressed`
+/// array.
+///
+/// # Errors
+///
+/// Errors with
+/// - [`Error::DecompressShapeMismatch`] if the `decompressed` array is of a
+///   different shape than the SPERR header indicates
+/// - [`Error::Other`] if another error occurs inside SPERR
+#[allow(clippy::missing_panics_doc)]
 pub fn decompress_into_3d<T: Element>(
     compressed: &[u8],
     mut decompressed: ArrayViewMut3<T>,
@@ -277,7 +317,7 @@ pub fn decompress_into_3d<T: Element>(
         sperr_sys::sperr_decomp_3d(
             compressed.as_ptr().cast(),
             compressed.len(),
-            T::IS_FLOAT as _,
+            T::IS_FLOAT.into(),
             0,
             std::ptr::addr_of_mut!(dim_x),
             std::ptr::addr_of_mut!(dim_y),
@@ -288,9 +328,11 @@ pub fn decompress_into_3d<T: Element>(
 
     match res {
         0 => (), // ok
+        #[allow(clippy::unreachable)]
         1 => unreachable!("sperr_decomp_3d: dst is not pointing to a NULL pointer"),
         -1 => return Err(Error::Other),
-        _ => unreachable!("sperr_decomp_3d: unknown error kind {res}"),
+        #[allow(clippy::panic)]
+        _ => panic!("sperr_decomp_3d: unknown error kind {res}"),
     }
 
     #[allow(unsafe_code)] // Safety: dst is initialized by sperr_decomp_3d
@@ -322,5 +364,45 @@ impl sealed::Element for f64 {
 mod sealed {
     pub trait Element: Copy {
         const IS_FLOAT: bool;
+    }
+}
+
+#[cfg(test)]
+#[allow(clippy::expect_used)]
+mod tests {
+    use ndarray::{linspace, logspace, Array1, Array3};
+
+    use super::*;
+
+    fn compress_decompress(mode: CompressionMode) {
+        let data = linspace(1.0, 10.0, 128 * 128 * 128).collect::<Array1<f64>>()
+            + logspace(2.0, 0.0, 5.0, 128 * 128 * 128)
+                .rev()
+                .collect::<Array1<f64>>();
+        let data: Array3<f64> = data
+            .into_shape_clone((128, 128, 128))
+            .expect("create test data array");
+
+        let compressed =
+            compress_3d(data.view(), mode, (64, 64, 64)).expect("compression should not fail");
+
+        let mut decompressed = Array3::<f64>::zeros(data.dim());
+        decompress_into_3d(compressed.as_slice(), decompressed.view_mut())
+            .expect("decompression should not fail");
+    }
+
+    #[test]
+    fn compress_decompress_bpp() {
+        compress_decompress(CompressionMode::BitsPerPixel { bpp: 2.0 });
+    }
+
+    #[test]
+    fn compress_decompress_psnr() {
+        compress_decompress(CompressionMode::PeakSignalToNoiseRatio { psnr: 30.0 });
+    }
+
+    #[test]
+    fn compress_decompress_pwe() {
+        compress_decompress(CompressionMode::PointwiseError { pwe: 0.1 });
     }
 }

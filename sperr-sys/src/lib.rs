@@ -27,9 +27,4 @@
 #[cfg(feature = "openmp")]
 use ::openmp_sys as _;
 
-mod bindings {
-    include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
-}
-
-pub use bindings::root::free_dst;
-pub use bindings::root::C_API::*;
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));

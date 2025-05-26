@@ -3,10 +3,14 @@
 
 // Adapted from sz3-sys's build script by Robin Ole Heinemann, licensed under GPL-3.0-only.
 
-use std::{env, path::PathBuf};
+use std::{
+    env,
+    path::{Path, PathBuf},
+};
 
 fn main() {
     println!("cargo::rerun-if-changed=build.rs");
+    println!("cargo::rerun-if-changed=lib.cpp");
     println!("cargo::rerun-if-changed=wrapper.hpp");
     println!("cargo::rerun-if-changed=SPERR");
 
@@ -25,17 +29,6 @@ fn main() {
     );
     let sperr_out = config.build();
 
-    println!("cargo::rustc-link-search=native={}", sperr_out.display());
-    println!(
-        "cargo::rustc-link-search=native={}",
-        sperr_out.join("lib").display()
-    );
-    println!(
-        "cargo::rustc-link-search=native={}",
-        sperr_out.join("lib64").display()
-    );
-    println!("cargo::rustc-link-lib=static=SPERR");
-
     let cargo_callbacks = bindgen::CargoCallbacks::new();
     let bindings = bindgen::Builder::default()
         .clang_arg("-x")
@@ -44,14 +37,13 @@ fn main() {
         .clang_arg(format!("-I{}", sperr_out.join("include").display()))
         .header("wrapper.hpp")
         .parse_callbacks(Box::new(cargo_callbacks))
-        .allowlist_function("C_API::sperr_comp_2d")
-        .allowlist_function("C_API::sperr_decomp_2d")
-        .allowlist_function("C_API::sperr_parse_header")
-        .allowlist_function("C_API::sperr_comp_3d")
-        .allowlist_function("C_API::sperr_decomp_3d")
-        .allowlist_function("C_API::sperr_trunc_3d")
+        .allowlist_function("sperr_comp_2d")
+        .allowlist_function("sperr_decomp_2d")
+        .allowlist_function("sperr_parse_header")
+        .allowlist_function("sperr_comp_3d")
+        .allowlist_function("sperr_decomp_3d")
+        .allowlist_function("sperr_trunc_3d")
         .allowlist_function("free_dst")
-        .enable_cxx_namespaces()
         // MSRV 1.82
         .rust_target(match bindgen::RustTarget::stable(82, 0) {
             Ok(target) => target,
@@ -66,4 +58,27 @@ fn main() {
     bindings
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
+
+    let mut build = cc::Build::new();
+
+    build
+        .cpp(true)
+        .std("c++17")
+        .include(sperr_out.join("include"))
+        .include(Path::new("SPERR").join("src"))
+        .file("lib.cpp")
+        .files(
+            Path::new("SPERR")
+                .join("src")
+                .read_dir()
+                .expect("failed to iterate over the SPERR src directory")
+                .filter_map(|p| match p {
+                    Ok(p) if p.path().extension().is_some_and(|e| e == "cpp") => Some(p.path()),
+                    _ => None,
+                }),
+        )
+        .file(Path::new("SPERR").join("src").join("SPERR_C_API.cpp"))
+        .warnings(false);
+
+    build.compile("mySPERR");
 }
