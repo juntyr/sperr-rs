@@ -29,6 +29,17 @@ fn main() {
     );
     let sperr_out = config.build();
 
+    println!("cargo::rustc-link-search=native={}", sperr_out.display());
+    println!(
+        "cargo::rustc-link-search=native={}",
+        sperr_out.join("lib").display()
+    );
+    println!(
+        "cargo::rustc-link-search=native={}",
+        sperr_out.join("lib64").display()
+    );
+    println!("cargo::rustc-link-lib=static=SPERR");
+
     let cargo_callbacks = bindgen::CargoCallbacks::new();
     let bindings = bindgen::Builder::default()
         .clang_arg("-x")
@@ -67,17 +78,6 @@ fn main() {
         .include(sperr_out.join("include"))
         .include(Path::new("SPERR").join("src"))
         .file("lib.cpp")
-        .files(
-            Path::new("SPERR")
-                .join("src")
-                .read_dir()
-                .expect("failed to iterate over the SPERR src directory")
-                .filter_map(|p| match p {
-                    Ok(p) if p.path().extension().is_some_and(|e| e == "cpp") => Some(p.path()),
-                    _ => None,
-                }),
-        )
-        .file(Path::new("SPERR").join("src").join("SPERR_C_API.cpp"))
         .warnings(false);
 
     build.compile("mySPERR");
