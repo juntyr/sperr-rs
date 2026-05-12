@@ -1,9 +1,9 @@
 (function() {
-    var implementors = Object.fromEntries([["sperr",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.UnwindSafe.html\" title=\"trait core::panic::unwind_safe::UnwindSafe\">UnwindSafe</a> for <a class=\"enum\" href=\"sperr/enum.CompressionMode.html\" title=\"enum sperr::CompressionMode\">CompressionMode</a>",1,["sperr::CompressionMode"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.UnwindSafe.html\" title=\"trait core::panic::unwind_safe::UnwindSafe\">UnwindSafe</a> for <a class=\"enum\" href=\"sperr/enum.Error.html\" title=\"enum sperr::Error\">Error</a>",1,["sperr::Error"]]]]]);
+    const implementors = Object.fromEntries([["sperr",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.UnwindSafe.html\" title=\"trait core::panic::unwind_safe::UnwindSafe\">UnwindSafe</a> for <a class=\"enum\" href=\"sperr/enum.CompressionMode.html\" title=\"enum sperr::CompressionMode\">CompressionMode</a>",0,1,["sperr::CompressionMode"]],["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/panic/unwind_safe/trait.UnwindSafe.html\" title=\"trait core::panic::unwind_safe::UnwindSafe\">UnwindSafe</a> for <a class=\"enum\" href=\"sperr/enum.Error.html\" title=\"enum sperr::Error\">Error</a>",0,1,["sperr::Error"]]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":57,"fragment_lengths":[639]}
+//{"start":59,"fragment_lengths":[643]}

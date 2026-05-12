@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-ca0dd0c4.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="sperr" data-themes="" data-resource-suffix="" data-rustdoc-version="1.92.0-nightly (57ef8d642 2025-10-15)" data-channel="nightly" data-search-js="search-8d3311b9.js" data-stringdex-js="stringdex-828709d0.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-ce535bd0.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">sperr/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! [![CI Status]][workflow] [![MSRV]][repo] [![Latest Version]][crates.io]
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-17e0aaed.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="sperr" data-themes="" data-resource-suffix="" data-rustdoc-version="1.97.0-nightly (64a965e90 2026-05-11)" data-channel="nightly" data-search-js="search-b5634cc7.js" data-stringdex-js="stringdex-2da4960a.js" data-settings-js="settings-170eb4bf.js" ><script src="../../static.files/storage-41dd4d93.js"></script><script defer src="../../static.files/src-script-813739b1.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-aa4d37ac.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-f7c3ffd8.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1><div class="sub-heading">sperr/</div>lib.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap digits-3"><pre class="rust"><code><a href=#1 id=1 data-nosnippet>1</a><span class="doccomment">//! [![CI Status]][workflow] [![MSRV]][repo] [![Latest Version]][crates.io]
 <a href=#2 id=2 data-nosnippet>2</a>//! [![Rust Doc Crate]][docs.rs] [![Rust Doc Main]][docs]
 <a href=#3 id=3 data-nosnippet>3</a>//!
 <a href=#4 id=4 data-nosnippet>4</a>//! [CI Status]: https://img.shields.io/github/actions/workflow/status/juntyr/sperr-rs/ci.yml?branch=main
@@ -24,9 +24,9 @@
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="kw">use </span>ndarray::{<a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView2.html">ArrayView2</a>, <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView3.html">ArrayView3</a>, <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayViewMut2.html">ArrayViewMut2</a>, <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayViewMut3.html">ArrayViewMut3</a>};
 <a href=#26 id=26 data-nosnippet>26</a>
-<a href=#27 id=27 data-nosnippet>27</a><span class="attr">#[derive(<a href="#29-50">Copy</a>, <a href="#29-50">Clone</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Debug</a>)]
+<a href=#27 id=27 data-nosnippet>27</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/marker/derive.Copy.html">Copy</a>, <a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
 <a href=#28 id=28 data-nosnippet>28</a></span><span class="doccomment">/// SPERR compression mode / quality control
-<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub enum </span><a href="../../sperr/enum.CompressionMode.html">CompressionMode</a> {
+<a href=#29 id=29 data-nosnippet>29</a></span><span class="kw">pub enum </span><a href="#29-50">CompressionMode</a> {
 <a href=#30 id=30 data-nosnippet>30</a>    <span class="doccomment">/// Fixed bit-per-pixel rate
 <a href=#31 id=31 data-nosnippet>31</a>    </span>BitsPerPixel {
 <a href=#32 id=32 data-nosnippet>32</a>        <span class="doccomment">/// positive bits-per-pixel
@@ -49,7 +49,7 @@
 <a href=#49 id=49 data-nosnippet>49</a>    },
 <a href=#50 id=50 data-nosnippet>50</a>}
 <a href=#51 id=51 data-nosnippet>51</a>
-<a href=#52 id=52 data-nosnippet>52</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">thiserror::Error</a>)]
+<a href=#52 id=52 data-nosnippet>52</a><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, thiserror::Error)]
 <a href=#53 id=53 data-nosnippet>53</a></span><span class="doccomment">/// Errors that can occur during compression and decompression with SPERR
 <a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">pub enum </span><a href="#54-67">Error</a> {
 <a href=#55 id=55 data-nosnippet>55</a>    <span class="doccomment">/// one or more parameters is invalid
@@ -68,7 +68,7 @@
 <a href=#68 id=68 data-nosnippet>68</a>
 <a href=#69 id=69 data-nosnippet>69</a><span class="kw">impl </span><a href="#29-50">CompressionMode</a> {
 <a href=#70 id=70 data-nosnippet>70</a>    <span class="kw">const fn </span>as_mode(<span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/ffi/primitives/type.c_int.html">c_int</a> {
-<a href=#71 id=71 data-nosnippet>71</a>        <span class="kw">match </span><span class="self"><a href="#70">self</a> </span>{
+<a href=#71 id=71 data-nosnippet>71</a>        <span class="kw">match </span><a class="self" href="#70">self</a> {
 <a href=#72 id=72 data-nosnippet>72</a>            <span class="self">Self</span>::<a href="#31-34">BitsPerPixel</a> { .. } =&gt; <span class="number">1</span>,
 <a href=#73 id=73 data-nosnippet>73</a>            <span class="self">Self</span>::<a href="#36-39">PeakSignalToNoiseRatio</a> { .. } =&gt; <span class="number">2</span>,
 <a href=#74 id=74 data-nosnippet>74</a>            <span class="self">Self</span>::<a href="#41-44">PointwiseError</a> { .. } =&gt; <span class="number">3</span>,
@@ -77,7 +77,7 @@
 <a href=#77 id=77 data-nosnippet>77</a>    }
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a>    <span class="kw">const fn </span>as_quality(<span class="self">self</span>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a> {
-<a href=#80 id=80 data-nosnippet>80</a>        <span class="kw">match </span><span class="self"><a href="#79">self</a> </span>{
+<a href=#80 id=80 data-nosnippet>80</a>        <span class="kw">match </span><a class="self" href="#79">self</a> {
 <a href=#81 id=81 data-nosnippet>81</a>            <span class="self">Self</span>::<a href="#31-34">BitsPerPixel</a> { bpp: quality }
 <a href=#82 id=82 data-nosnippet>82</a>            | <span class="self">Self</span>::<a href="#36-39">PeakSignalToNoiseRatio</a> { psnr: quality }
 <a href=#83 id=83 data-nosnippet>83</a>            | <span class="self">Self</span>::<a href="#41-44">PointwiseError</a> { pwe: quality }
@@ -113,24 +113,24 @@
 <a href=#113 id=113 data-nosnippet>113</a>            <a href="#99">mode</a>.<a href="#70-77">as_mode</a>(),
 <a href=#114 id=114 data-nosnippet>114</a>            <a href="#99">mode</a>.<a href="#79-86">as_quality</a>(),
 <a href=#115 id=115 data-nosnippet>115</a>            <span class="bool-val">true</span>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
-<a href=#116 id=116 data-nosnippet>116</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
-<a href=#117 id=117 data-nosnippet>117</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst_len),
+<a href=#116 id=116 data-nosnippet>116</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
+<a href=#117 id=117 data-nosnippet>117</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst_len),
 <a href=#118 id=118 data-nosnippet>118</a>        )
 <a href=#119 id=119 data-nosnippet>119</a>    };
 <a href=#120 id=120 data-nosnippet>120</a>
 <a href=#121 id=121 data-nosnippet>121</a>    <span class="kw">match </span><a href="#107">res</a> {
 <a href=#122 id=122 data-nosnippet>122</a>        <span class="number">0 </span>=&gt; (), <span class="comment">// ok
 <a href=#123 id=123 data-nosnippet>123</a>        </span><span class="attr">#[allow(clippy::unreachable)]
-<a href=#124 id=124 data-nosnippet>124</a>        </span><span class="number">1 </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_comp_2d: dst is not pointing to a NULL pointer"</span>),
+<a href=#124 id=124 data-nosnippet>124</a>        </span><span class="number">1 </span>=&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_comp_2d: dst is not pointing to a NULL pointer"</span>),
 <a href=#125 id=125 data-nosnippet>125</a>        <span class="number">2 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#57">InvalidParameter</a>),
 <a href=#126 id=126 data-nosnippet>126</a>        -<span class="number">1 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#66">Other</a>),
 <a href=#127 id=127 data-nosnippet>127</a>        <span class="attr">#[allow(clippy::panic)]
-<a href=#128 id=128 data-nosnippet>128</a>        </span><span class="kw">_ </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_comp_2d: unknown error kind {res}"</span>),
+<a href=#128 id=128 data-nosnippet>128</a>        </span><span class="kw">_ </span>=&gt; <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_comp_2d: unknown error kind {res}"</span>),
 <a href=#129 id=129 data-nosnippet>129</a>    }
 <a href=#130 id=130 data-nosnippet>130</a>
 <a href=#131 id=131 data-nosnippet>131</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: dst is initialized by sperr_comp_2d
 <a href=#132 id=132 data-nosnippet>132</a>    </span><span class="kw">let </span>compressed =
-<a href=#133 id=133 data-nosnippet>133</a>        <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw">unsafe </span>{ std::slice::<a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">from_raw_parts</a>(<a href="#103">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;(), <a href="#104">dst_len</a>) });
+<a href=#133 id=133 data-nosnippet>133</a>        <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw">unsafe </span>{ std::slice::<a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">from_raw_parts</a>(<a href="#103">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;(), <a href="#104">dst_len</a>) });
 <a href=#134 id=134 data-nosnippet>134</a>
 <a href=#135 id=135 data-nosnippet>135</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: FFI, dst is allocated by sperr_comp_2d
 <a href=#136 id=136 data-nosnippet>136</a>    </span><span class="kw">unsafe </span>{
@@ -169,10 +169,10 @@
 <a href=#169 id=169 data-nosnippet>169</a>    </span><span class="kw">unsafe </span>{
 <a href=#170 id=170 data-nosnippet>170</a>        sperr_sys::<a href="../../sperr_sys/fn.sperr_parse_header.html">sperr_parse_header</a>(
 <a href=#171 id=171 data-nosnippet>171</a>            <a href="#159">header</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>(),
-<a href=#172 id=172 data-nosnippet>172</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
-<a href=#173 id=173 data-nosnippet>173</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
-<a href=#174 id=174 data-nosnippet>174</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
-<a href=#175 id=175 data-nosnippet>175</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(is_float),
+<a href=#172 id=172 data-nosnippet>172</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
+<a href=#173 id=173 data-nosnippet>173</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
+<a href=#174 id=174 data-nosnippet>174</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
+<a href=#175 id=175 data-nosnippet>175</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(is_float),
 <a href=#176 id=176 data-nosnippet>176</a>        );
 <a href=#177 id=177 data-nosnippet>177</a>    }
 <a href=#178 id=178 data-nosnippet>178</a>
@@ -190,22 +190,22 @@
 <a href=#190 id=190 data-nosnippet>190</a>            T::<a href="#372">IS_FLOAT</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
 <a href=#191 id=191 data-nosnippet>191</a>            <a href="#157">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>().<span class="number">1</span>,
 <a href=#192 id=192 data-nosnippet>192</a>            <a href="#157">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>().<span class="number">0</span>,
-<a href=#193 id=193 data-nosnippet>193</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
+<a href=#193 id=193 data-nosnippet>193</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
 <a href=#194 id=194 data-nosnippet>194</a>        )
 <a href=#195 id=195 data-nosnippet>195</a>    };
 <a href=#196 id=196 data-nosnippet>196</a>
 <a href=#197 id=197 data-nosnippet>197</a>    <span class="kw">match </span><a href="#186">res</a> {
 <a href=#198 id=198 data-nosnippet>198</a>        <span class="number">0 </span>=&gt; (), <span class="comment">// ok
 <a href=#199 id=199 data-nosnippet>199</a>        </span><span class="attr">#[allow(clippy::unreachable)]
-<a href=#200 id=200 data-nosnippet>200</a>        </span><span class="number">1 </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_decomp_2d: dst is not pointing to a NULL pointer"</span>),
+<a href=#200 id=200 data-nosnippet>200</a>        </span><span class="number">1 </span>=&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_decomp_2d: dst is not pointing to a NULL pointer"</span>),
 <a href=#201 id=201 data-nosnippet>201</a>        -<span class="number">1 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#66">Other</a>),
 <a href=#202 id=202 data-nosnippet>202</a>        <span class="attr">#[allow(clippy::panic)]
-<a href=#203 id=203 data-nosnippet>203</a>        </span><span class="kw">_ </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_decomp_2d: unknown error kind {res}"</span>),
+<a href=#203 id=203 data-nosnippet>203</a>        </span><span class="kw">_ </span>=&gt; <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_decomp_2d: unknown error kind {res}"</span>),
 <a href=#204 id=204 data-nosnippet>204</a>    }
 <a href=#205 id=205 data-nosnippet>205</a>
 <a href=#206 id=206 data-nosnippet>206</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: dst is initialized by sperr_decomp_2d
 <a href=#207 id=207 data-nosnippet>207</a>    </span><span class="kw">let </span>dec =
-<a href=#208 id=208 data-nosnippet>208</a>        <span class="kw">unsafe </span>{ <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView2.html">ArrayView2</a>::<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.from_shape_ptr">from_shape_ptr</a>(<a href="#157">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>(), <a href="#183">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>::&lt;T&gt;()) };
+<a href=#208 id=208 data-nosnippet>208</a>        <span class="kw">unsafe </span>{ <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView2.html">ArrayView2</a>::<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.from_shape_ptr">from_shape_ptr</a>(<a href="#157">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>(), <a href="#183">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().cast::&lt;T&gt;()) };
 <a href=#209 id=209 data-nosnippet>209</a>    <a href="#157">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.assign">assign</a>(<span class="kw-2">&amp;</span><a href="#207">dec</a>);
 <a href=#210 id=210 data-nosnippet>210</a>
 <a href=#211 id=211 data-nosnippet>211</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: FFI, dst is allocated by sperr_decomp_2d
@@ -249,24 +249,24 @@
 <a href=#249 id=249 data-nosnippet>249</a>            <a href="#230">mode</a>.<a href="#70-77">as_mode</a>(),
 <a href=#250 id=250 data-nosnippet>250</a>            <a href="#230">mode</a>.<a href="#79-86">as_quality</a>(),
 <a href=#251 id=251 data-nosnippet>251</a>            <span class="number">0</span>,
-<a href=#252 id=252 data-nosnippet>252</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
-<a href=#253 id=253 data-nosnippet>253</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst_len),
+<a href=#252 id=252 data-nosnippet>252</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
+<a href=#253 id=253 data-nosnippet>253</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst_len),
 <a href=#254 id=254 data-nosnippet>254</a>        )
 <a href=#255 id=255 data-nosnippet>255</a>    };
 <a href=#256 id=256 data-nosnippet>256</a>
 <a href=#257 id=257 data-nosnippet>257</a>    <span class="kw">match </span><a href="#239">res</a> {
 <a href=#258 id=258 data-nosnippet>258</a>        <span class="number">0 </span>=&gt; (), <span class="comment">// ok
 <a href=#259 id=259 data-nosnippet>259</a>        </span><span class="attr">#[allow(clippy::unreachable)]
-<a href=#260 id=260 data-nosnippet>260</a>        </span><span class="number">1 </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_comp_3d: dst is not pointing to a NULL pointer"</span>),
+<a href=#260 id=260 data-nosnippet>260</a>        </span><span class="number">1 </span>=&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_comp_3d: dst is not pointing to a NULL pointer"</span>),
 <a href=#261 id=261 data-nosnippet>261</a>        <span class="number">2 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#57">InvalidParameter</a>),
 <a href=#262 id=262 data-nosnippet>262</a>        -<span class="number">1 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#66">Other</a>),
 <a href=#263 id=263 data-nosnippet>263</a>        <span class="attr">#[allow(clippy::panic)]
-<a href=#264 id=264 data-nosnippet>264</a>        </span><span class="kw">_ </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_comp_3d: unknown error kind {res}"</span>),
+<a href=#264 id=264 data-nosnippet>264</a>        </span><span class="kw">_ </span>=&gt; <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_comp_3d: unknown error kind {res}"</span>),
 <a href=#265 id=265 data-nosnippet>265</a>    }
 <a href=#266 id=266 data-nosnippet>266</a>
 <a href=#267 id=267 data-nosnippet>267</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: dst is initialized by sperr_comp_3d
 <a href=#268 id=268 data-nosnippet>268</a>    </span><span class="kw">let </span>compressed =
-<a href=#269 id=269 data-nosnippet>269</a>        <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw">unsafe </span>{ std::slice::<a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">from_raw_parts</a>(<a href="#235">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;(), <a href="#236">dst_len</a>) });
+<a href=#269 id=269 data-nosnippet>269</a>        <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>(<span class="kw">unsafe </span>{ std::slice::<a href="https://doc.rust-lang.org/nightly/core/slice/raw/fn.from_raw_parts.html">from_raw_parts</a>(<a href="#235">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;(), <a href="#236">dst_len</a>) });
 <a href=#270 id=270 data-nosnippet>270</a>
 <a href=#271 id=271 data-nosnippet>271</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: FFI, dst is allocated by sperr_comp_3d
 <a href=#272 id=272 data-nosnippet>272</a>    </span><span class="kw">unsafe </span>{
@@ -299,10 +299,10 @@
 <a href=#299 id=299 data-nosnippet>299</a>    </span><span class="kw">unsafe </span>{
 <a href=#300 id=300 data-nosnippet>300</a>        sperr_sys::<a href="../../sperr_sys/fn.sperr_parse_header.html">sperr_parse_header</a>(
 <a href=#301 id=301 data-nosnippet>301</a>            <a href="#290">compressed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.as_ptr">as_ptr</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>(),
-<a href=#302 id=302 data-nosnippet>302</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
-<a href=#303 id=303 data-nosnippet>303</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
-<a href=#304 id=304 data-nosnippet>304</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
-<a href=#305 id=305 data-nosnippet>305</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(is_float),
+<a href=#302 id=302 data-nosnippet>302</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
+<a href=#303 id=303 data-nosnippet>303</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
+<a href=#304 id=304 data-nosnippet>304</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
+<a href=#305 id=305 data-nosnippet>305</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(is_float),
 <a href=#306 id=306 data-nosnippet>306</a>        );
 <a href=#307 id=307 data-nosnippet>307</a>    }
 <a href=#308 id=308 data-nosnippet>308</a>
@@ -325,25 +325,25 @@
 <a href=#325 id=325 data-nosnippet>325</a>            <a href="#290">compressed</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.len">len</a>(),
 <a href=#326 id=326 data-nosnippet>326</a>            T::<a href="#372">IS_FLOAT</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>(),
 <a href=#327 id=327 data-nosnippet>327</a>            <span class="number">0</span>,
-<a href=#328 id=328 data-nosnippet>328</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
-<a href=#329 id=329 data-nosnippet>329</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
-<a href=#330 id=330 data-nosnippet>330</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
-<a href=#331 id=331 data-nosnippet>331</a>            <a class="macro" href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
+<a href=#328 id=328 data-nosnippet>328</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_x),
+<a href=#329 id=329 data-nosnippet>329</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_y),
+<a href=#330 id=330 data-nosnippet>330</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dim_z),
+<a href=#331 id=331 data-nosnippet>331</a>            <a href="https://doc.rust-lang.org/nightly/core/ptr/macro.addr_of_mut.html">std::ptr::addr_of_mut!</a>(dst),
 <a href=#332 id=332 data-nosnippet>332</a>        )
 <a href=#333 id=333 data-nosnippet>333</a>    };
 <a href=#334 id=334 data-nosnippet>334</a>
 <a href=#335 id=335 data-nosnippet>335</a>    <span class="kw">match </span><a href="#322">res</a> {
 <a href=#336 id=336 data-nosnippet>336</a>        <span class="number">0 </span>=&gt; (), <span class="comment">// ok
 <a href=#337 id=337 data-nosnippet>337</a>        </span><span class="attr">#[allow(clippy::unreachable)]
-<a href=#338 id=338 data-nosnippet>338</a>        </span><span class="number">1 </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_decomp_3d: dst is not pointing to a NULL pointer"</span>),
+<a href=#338 id=338 data-nosnippet>338</a>        </span><span class="number">1 </span>=&gt; <a href="https://doc.rust-lang.org/nightly/core/macro.unreachable.html">unreachable!</a>(<span class="string">"sperr_decomp_3d: dst is not pointing to a NULL pointer"</span>),
 <a href=#339 id=339 data-nosnippet>339</a>        -<span class="number">1 </span>=&gt; <span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error::<a href="#66">Other</a>),
 <a href=#340 id=340 data-nosnippet>340</a>        <span class="attr">#[allow(clippy::panic)]
-<a href=#341 id=341 data-nosnippet>341</a>        </span><span class="kw">_ </span>=&gt; <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_decomp_3d: unknown error kind {res}"</span>),
+<a href=#341 id=341 data-nosnippet>341</a>        </span><span class="kw">_ </span>=&gt; <a href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(<span class="string">"sperr_decomp_3d: unknown error kind {res}"</span>),
 <a href=#342 id=342 data-nosnippet>342</a>    }
 <a href=#343 id=343 data-nosnippet>343</a>
 <a href=#344 id=344 data-nosnippet>344</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: dst is initialized by sperr_decomp_3d
 <a href=#345 id=345 data-nosnippet>345</a>    </span><span class="kw">let </span>dec =
-<a href=#346 id=346 data-nosnippet>346</a>        <span class="kw">unsafe </span>{ <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView3.html">ArrayView3</a>::<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.from_shape_ptr">from_shape_ptr</a>(<a href="#291">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>(), <a href="#319">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.const_ptr.html#method.cast">cast</a>::&lt;T&gt;()) };
+<a href=#346 id=346 data-nosnippet>346</a>        <span class="kw">unsafe </span>{ <a href="https://docs.rs/ndarray/0.15/ndarray/aliases/type.ArrayView3.html">ArrayView3</a>::<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.from_shape_ptr">from_shape_ptr</a>(<a href="#291">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.dim">dim</a>(), <a href="#319">dst</a>.<a href="https://doc.rust-lang.org/nightly/core/ptr/foreigntype.mut_ptr.html#method.cast_const">cast_const</a>().cast::&lt;T&gt;()) };
 <a href=#347 id=347 data-nosnippet>347</a>    <a href="#291">decompressed</a>.<a href="https://docs.rs/ndarray/0.15/ndarray/struct.ArrayBase.html#method.assign">assign</a>(<span class="kw-2">&amp;</span><a href="#345">dec</a>);
 <a href=#348 id=348 data-nosnippet>348</a>
 <a href=#349 id=349 data-nosnippet>349</a>    <span class="attr">#[allow(unsafe_code)] </span><span class="comment">// Safety: FFI, dst is allocated by sperr_decomp_3d
@@ -378,7 +378,7 @@
 <a href=#378 id=378 data-nosnippet>378</a></span><span class="kw">mod </span>tests {
 <a href=#379 id=379 data-nosnippet>379</a>    <span class="kw">use </span>ndarray::{linspace, logspace, Array1, Array3};
 <a href=#380 id=380 data-nosnippet>380</a>
-<a href=#381 id=381 data-nosnippet>381</a>    <span class="kw">use super</span>::<span class="kw-2">*</span>;
+<a href=#381 id=381 data-nosnippet>381</a>    <span class="kw">use </span>super::<span class="kw-2">*</span>;
 <a href=#382 id=382 data-nosnippet>382</a>
 <a href=#383 id=383 data-nosnippet>383</a>    <span class="kw">fn </span>compress_decompress(mode: CompressionMode) {
 <a href=#384 id=384 data-nosnippet>384</a>        <span class="kw">let </span>data = linspace(<span class="number">1.0</span>, <span class="number">10.0</span>, <span class="number">128 </span>* <span class="number">128 </span>* <span class="number">128</span>).collect::&lt;Array1&lt;f64&gt;&gt;()
@@ -416,4 +416,5 @@
 <a href=#416 id=416 data-nosnippet>416</a>    </span><span class="kw">fn </span>compress_decompress_q() {
 <a href=#417 id=417 data-nosnippet>417</a>        compress_decompress(CompressionMode::QuantisationStep { q: <span class="number">3.0 </span>});
 <a href=#418 id=418 data-nosnippet>418</a>    }
-<a href=#419 id=419 data-nosnippet>419</a>}</code></pre></div></section></main></body></html>
+<a href=#419 id=419 data-nosnippet>419</a>}
+</code></pre></div></section></main></body></html>

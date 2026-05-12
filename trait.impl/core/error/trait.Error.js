@@ -1,9 +1,9 @@
 (function() {
-    var implementors = Object.fromEntries([["sperr",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> for <a class=\"enum\" href=\"sperr/enum.Error.html\" title=\"enum sperr::Error\">Error</a>"]]]]);
+    const implementors = Object.fromEntries([["sperr",[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/error/trait.Error.html\" title=\"trait core::error::Error\">Error</a> for <a class=\"enum\" href=\"sperr/enum.Error.html\" title=\"enum sperr::Error\">Error</a>",0]]]]);
     if (window.register_implementors) {
         window.register_implementors(implementors);
     } else {
         window.pending_implementors = implementors;
     }
 })()
-//{"start":57,"fragment_lengths":[246]}
+//{"start":59,"fragment_lengths":[248]}
