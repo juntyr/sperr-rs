@@ -13,8 +13,8 @@ rust-version = "1.82"
 
 [workspace.dependencies]
 # workspace-internal crates
-sperr = { version = "0.2", path = ".", default-features = false }
-sperr-sys = { version = "0.2", path = "sperr-sys", default-features = false }
+sperr = { version = "0.2.1", path = ".", default-features = false }
+sperr-sys = { version = "0.2.1", path = "sperr-sys", default-features = false }
 
 # crates.io third-party dependencies
 bindgen = { version = "0.72", default-features = false }
@@ -56,7 +56,7 @@ multiple_crate_versions = "warn"
 
 [package]
 name = "sperr"
-version = "0.2.0"
+version = "0.2.1+sperr.0.8.5"
 edition = { workspace = true }
 authors = { workspace = true }
 repository = { workspace = true }
